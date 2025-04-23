@@ -1,1 +1,19 @@
+import zipfile
+import os
+
+# Define source files and destination zip
+html_dir = "html_pages"
+output_zip = "exports/html_pages.zip"
+
+# Ensure output folder exists
+os.makedirs("exports", exist_ok=True)
+
+# Create ZIP file
+with zipfile.ZipFile(output_zip, 'w', zipfile.ZIP_DEFLATED) as zipf:
+    files_to_zip = ["example_com_index.html", "example_com_about.html"]
+    for file_name in files_to_zip:
+        file_path = os.path.join(html_dir, file_name)
+        zipf.write(file_path, arcname=file_name)
+
+print(f"ZIP created at: {output_zip}")
 
