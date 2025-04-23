@@ -1,10 +1,19 @@
-import streamlit as st
+import sys
 import os
+
+# Add project root to PYTHONPATH
+current_dir = os.path.dirname(__file__)
+project_root = os.path.abspath(os.path.join(current_dir, ".."))
+if project_root not in sys.path:
+    sys.path.append(project_root)
+
+import streamlit as st
 import subprocess
 import time
 from reports.excel_report import generate_main_report
 from reports.trados_like_report import generate_trados_style_report
 from utils.zip_utils import zip_html_folder
+
 
 # Paths
 html_dir = "html_pages"
